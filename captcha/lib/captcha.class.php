@@ -73,7 +73,12 @@ class KtCaptcha {
 	//private $chars = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
 
 	function __construct( $fonts, $width, $height ){
-		$this->fonts = $fonts;
+		foreach($fonts as $k=>$f ){
+			if(substr($f,0,1) != "/"){
+				$f = realpath(dirname(__FILE__) . '/../share/') .'/'. $f;
+			}
+			$this->fonts[$k] = $f;
+		}
 		$this->width = $width;
 		$this->height = $height;
 	}
