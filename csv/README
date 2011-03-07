@@ -1,0 +1,4 @@
+EXCELLからの変なCSV対策の事前処理
+
+nkf -wLu sample/data/out_setting05.xml  |\
+sed -e 's/[,^]"",/@@@"",/g' -e 's/""/\\"/g' -e 's/\\"@@@\\"/""/g' > sample/data/out_setting05.csv
